@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
+    public UnityEngine.UI.Button Button;
     public UnityEngine.UI.Text time,Right,Situation;
     private Rigidbody Rigidbody;
     public float speed = 1.5f;
@@ -14,6 +15,7 @@ public class BallScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       Right.text=healthCounter+"";
        Rigidbody = GetComponent<Rigidbody> ();
     }
 
@@ -26,6 +28,7 @@ public class BallScript : MonoBehaviour
         }
         else if(!gameFinished){
             Situation.text="Game over!";
+            Button.gameObject.SetActive(true);
         }
         if(timeCounter<0){
             gameNext=false;
@@ -51,6 +54,7 @@ public class BallScript : MonoBehaviour
             Situation.text="Game finished! Perfect!";
             Rigidbody.velocity = Vector3.zero;
             Rigidbody.angularVelocity =Vector3.zero;
+            Button.gameObject.SetActive(true);
 
         }
         else if(!objName.Equals("Plane") && !objName.Equals("Plane2")){
